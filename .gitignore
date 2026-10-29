@@ -1,0 +1,26 @@
+#gitignore from google to properly exclude python artifacts, venv, and .env
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Python Bytecode & Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Python Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs & System Files
+.vscode/
+.idea/
+.DS_Store
+
+# SQLite database
+db.sqlite3
+*.sqlite3
