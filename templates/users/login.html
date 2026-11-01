@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    {% include "bootstrap.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess</title>
+    <link rel="stylesheet" href="{% static 'chessboard.css' %}"/>
+    <script src="{% static 'chessboard.js' %}"></script>
+  </head>
+  <body>
+
+    {% include "navigation.html" %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Login</h1>
+            <form action="/login/" method="POST">
+                {% csrf_token %}
+                {{ login_form.as_p }}
+                <input type="submit" class="btn btn-primary" value="Login" />
+                <br/>
+                <a href="/signup">Click here to Sign up</a>
+            </form>
+        </div>
+    </div>
+
+  </body>
+</html>

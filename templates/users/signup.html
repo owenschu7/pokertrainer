@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    {% load bootstrap4 %}
+    {% include "bootstrap.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess</title>
+    <link rel="stylesheet" href="{% static 'chessboard.css' %}"/>
+    <script src="{% static 'chessboard.js' %}"></script>
+  </head>
+  <body>
+
+    {% include "navigation.html" %}
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center">Join</h1>
+            <form method="POST">
+                {% csrf_token %}
+                {% bootstrap_form join_form %}
+                <input type="submit" class="btn btn-primary d-block mx-auto" value="Join" />
+            </form>
+        </div>
+    </div>
+
+  </body>
+</html>
