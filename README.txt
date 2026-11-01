@@ -1,5 +1,17 @@
 CSCI 565 Final Project
 
+
+TODO:
+- figure out a way to represent a puzzle as a model
+- need to store
+  - the difficulty
+  - the cards, 2 for the user, and at least 5 for the board
+  - the pot size
+  - the current bet/ amount to call
+  - pot odds/equity calculation
+  - the history of who bet before.
+
+
 --------APPS---------
 
 users
@@ -10,10 +22,12 @@ users
 
 trainer
 - models:
-- url routing: trainer/arena trainer/play
+- url routing: trainer/trainer_home.html trainer/play.html
 - views:
+  - startgame
+  - 
 - templates:
-  - arena.html
+  - trainer_home.html
     - the dashboard for the arena 
       - select difficulty
       - start a puzzle
@@ -22,7 +36,7 @@ trainer
   - play.html
     - the actual game
 
-puzzle
+puzzle (not sure if this should be grouped in with trainer app)
 - models: holds info about the puzzle
   - the cards (your 2 cards + 0 or 3 or 4 or 5 from the board)
   - the difficulty (preflop, flop, turn, river etc)
@@ -42,40 +56,40 @@ lessons
   - lessons/{slug} - article view (slug is the article number of the article being viewed)
 - views:
 
---------- BASE TEMPLATES ------------
+famous
+  - this would probably be similar to the trainer apps models
+- models:
+  - date of game
+  - players in the game/their positions (small blind, under the gun etc)
+  - cards of the players
+  - moves made by the players,
+
+--------- TEMPLATES ------------
 
 templates/
+  --base templates--
   index.html
   navigation.html
+  footer.html
+
+  -- app templates --
+  trainer/
+    trainer_home.html
+    play.html
+  users/
+    signup.html
+    login.html
+  lessons/
+    lessons_home.html
 
 --------- STATIC ------------
 
 index.css
 
---------- TRAINER TEMPLATES ------------
-
-templates/
-  trainer/
-    arena.html
-    play.html
-
-
---------- USER TEMPLATES ------------
-
-templates/
-  users/
-    signup.html
-    login.html
-    logout.html
-
---------- LESSONS TEMPLATES ------------
-
-templates/
-  lessons/
-    lesson.html
-
-
 ********* MODELS ********* 
+user model
+article model
+puzzle model
 
 ********* USER MODELS ********* 
 
@@ -85,11 +99,6 @@ templates/
 
 
 
-
-
-users will hold the user model for their account + their score
-
-puzzle
 
 
 
