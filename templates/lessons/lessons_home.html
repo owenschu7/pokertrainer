@@ -1,1 +1,46 @@
-this is the home page for lessons
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    {% load static %}
+    {% include "bootstrap.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <title>Lessons - Poker Trainer</title>
+  </head>
+
+  <body>
+    {% include "navigation.html" %}
+
+    <header>
+      <h1>Lessons</h1>
+      <p>Get better at poker by reading these fundamental lessons about strategy, and poker statistics</p>
+    </header>
+
+    <main>
+      <div>
+        <h4>Learn Strategy here. Step by Step</h4>
+        {% if lessons %}
+        <ul>
+          {% for lesson in lessons %}
+            <li>
+                <a href="{% url 'lesson_detail' slug=lesson.slug %}">{{lesson.order}}. {{ lesson.title}}</a>
+            </li>
+          {% endfor %}
+
+        </ul>
+        {% else %}
+        <p>No lessons are available.</p>
+        {% endif %}
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Your Name</p>
+    </footer>
+
+    <!-- Optional: Link to an external JavaScript file -->
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>
