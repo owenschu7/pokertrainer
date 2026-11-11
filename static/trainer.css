@@ -1,0 +1,82 @@
+/* ai code - whole file */
+
+.table-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  margin: 40px auto;
+  font-family: sans-serif;
+}
+
+.poker-table-surface {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 60%;
+  background-color: #2e8b57; /* Felt green */
+  border: 12px solid #8b4513; /* Wooden brown edge */
+  border-radius: 200px / 100px; /* Makes it an oval */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.player-seat {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background-color: #333;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0.9em;
+  border: 3px solid #ccc;
+  z-index: 2;
+}
+
+/* 6 Player Positions */
+.seat-dealer  { top: 0; left: 50%; transform: translateX(-50%); }
+.seat-user    { bottom: 0; left: 50%; transform: translateX(-50%); background-color: #0d47a1; border-color: #ffd700; }
+.seat-left-1  { top: 20%; left: 0; }
+.seat-left-2  { bottom: 20%; left: 0; }
+.seat-right-1 { top: 20%; right: 0; }
+.seat-right-2 { bottom: 20%; right: 0; }
+
+.board-cards {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+/* New styling for image assets */
+.card-img {
+  width: 50px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.pot-info {
+  text-align: center;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.user-hand-info {
+  position: absolute;
+  top: -85px; /* Raised to accommodate image height */
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+}
