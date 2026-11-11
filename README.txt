@@ -2,14 +2,14 @@ CSCI 565 Final Project
 
 
 TODO:
-- figure out a way to represent a puzzle as a model
+- Almost done: figure out a way to represent a puzzle as a model
 - need to store
-  - the difficulty
-  - the cards, 2 for the user, and at least 5 for the board
-  - the pot size
+  - done: the difficulty
+  - done: the cards, 2 for the user, and at least 5 for the board
+  - done: the pot size
   - the current bet/ amount to call
-  - pot odds/equity calculation
-  - the history of who bet before.
+  - done: pot odds/equity calculation (also need a way to calculate these when we generate the puzzle)
+  - the history of who bet before. (json)
 
 
 --------APPS---------
@@ -21,11 +21,11 @@ users
 - templates: signup.html login.html, logout.html
 
 trainer
-- models:
+- models: Puzzle
 - url routing: trainer/trainer_home.html trainer/play.html
 - views:
-  - startgame
-  - 
+  - generate_and_play_puzzle(..) - generates a puzzle, deal cards, calculate pot odds, redirect to the view_puzzle view with the newly created puzzle model
+  - view_puzzle(..) - route to the new url injecting the model into the html template
 - templates:
   - trainer_home.html
     - the dashboard for the arena 
@@ -33,36 +33,24 @@ trainer
       - start a puzzle
       - view lessons
       - view stats
-  - play.html
+  - play_puzzle.html
     - the actual game
-
-puzzle (not sure if this should be grouped in with trainer app)
-- models: holds info about the puzzle
-  - the cards (your 2 cards + 0 or 3 or 4 or 5 from the board)
-  - the difficulty (preflop, flop, turn, river etc)
-  - number of players
-  - which players bet.
-- urls:
-- views:
-  - get/set functions
-  - card generation (or maybe we just generate 1000 random puzzles)
-- templates
-  - none
+    - renders the cards on the poker table, the hand history, buttons, chips, etc
 
 lessons
-- models: article title, article date, article body, article number
+- models: Lesson
 - url routing:
   - lessons/ - home page for all the lessons
-  - lessons/{slug} - article view (slug is the article number of the article being viewed)
+  - lessons/{slug} - article view (slug is the name of the article being viewed)
 - views:
 
 famous
-  - this would probably be similar to the trainer apps models
+  - this would probably be similar to the trainer apps models, except we generate these by hand in admin
 - models:
   - date of game
-  - players in the game/their positions (small blind, under the gun etc)
   - cards of the players
-  - moves made by the players,
+  - hand_history - moves made by the players,
+  - not determined yet
 
 --------- TEMPLATES ------------
 
@@ -70,25 +58,27 @@ templates/
   --base templates--
   index.html
   navigation.html
-  footer.html
+  TODO: footer.html
 
   -- app templates --
   trainer/
     trainer_home.html
-    play.html
+    play_puzzle.html
   users/
     signup.html
     login.html
   lessons/
     lessons_home.html
+    lesson_detail.html
 
 --------- STATIC ------------
 
-index.css
+TODO: index.css
+trainer.css - ai generated file for the table rendering.
 
 ********* MODELS ********* 
 user model
-article model
+lesson model
 puzzle model
 
 ********* USER MODELS ********* 
