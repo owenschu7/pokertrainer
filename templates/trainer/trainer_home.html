@@ -1,1 +1,47 @@
-home for trainer home page
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    {% load static %}
+    {% include "bootstrap.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'trainer.css' %}" />
+    <title>Lessons - Poker Trainer</title>
+  </head>
+
+  <body>
+    {% include "navigation.html" %}
+
+    <header>
+      <h1>Trainer Areana</h1>
+      <p>Get better at poker by playing these games.</p>
+    </header>
+
+    <main>
+      <div>
+        <h4>Learn Strategy here. Step by Step</h4>
+          <a href="{% url 'lessons' %}"><p>Go to Lessons</p></a>
+      </div>
+
+
+      <form action="{% url 'generate_puzzle' %}" method="POST">
+
+        {% csrf_token %}
+
+        <button type="submit" class="button">
+          Generate New Puzzle
+        </button>
+      </form>
+
+
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Your Name</p>
+    </footer>
+
+    <!-- Optional: Link to an external JavaScript file -->
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>

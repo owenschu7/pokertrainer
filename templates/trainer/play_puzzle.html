@@ -1,0 +1,73 @@
+<!--has ai generated code-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    {% load static %}
+    {% include "bootstrap.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'trainer.css' %}" />
+    <title>Play - Poker Trainer</title>
+  </head>
+
+  <body>
+    {% include "navigation.html" %}
+
+    <main>
+      <div>
+        <h4>Learn Strategy here. Step by Step</h4>
+        <a href="{% url 'lessons' %}"><p>Go to Lessons</p></a>
+      </div>
+
+      <!--ai code here-->
+      <div class="table-wrapper">
+        <!-- The Table Surface (Center) -->
+        <div class="poker-table-surface">
+          
+          <div class="board-cards">
+            {% for card in puzzle.board_cards %}
+              <!-- Assumes 'card' outputs exactly like 'ace_of_clubs' -->
+              <img src="{% static 'cards/' %}{{ card }}.png" alt="{{ card }}" class="card-img" />
+            {% empty %}
+              <p style="margin:0;">No cards on the board yet! (Pre-flop)</p>
+            {% endfor %}
+          </div>
+          
+          <div class="pot-info">
+            <div>Pot: ${{ puzzle.pot_size }}</div>
+            <div>To Call: ${{ puzzle.amount_to_call }}</div>
+          </div>
+
+        </div>
+
+        <!-- The Players -->
+        <div class="player-seat seat-dealer">Dealer</div>
+        <div class="player-seat seat-left-1">Player 2</div>
+        <div class="player-seat seat-left-2">Player 3</div>
+        <div class="player-seat seat-right-1">Player 4</div>
+        <div class="player-seat seat-right-2">Player 5</div>
+        
+        <!-- The User (Bottom Middle) -->
+        <div class="player-seat seat-user">
+          You
+          <div class="user-hand-info">
+            <img src="{% static 'cards/' %}{{ puzzle.hole_card_1 }}.png" alt="{{ puzzle.hole_card_1 }}" class="card-img" />
+            <img src="{% static 'cards/' %}{{ puzzle.hole_card_2 }}.png" alt="{{ puzzle.hole_card_1 }}" class="card-img" />
+          </div>
+        </div>
+      </div>
+      <!--end ai code-->
+
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Your Name</p>
+    </footer>
+
+    <!-- Optional: Link to an external JavaScript file -->
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>
