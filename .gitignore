@@ -24,3 +24,8 @@ env/
 # SQLite database
 db.sqlite3
 *.sqlite3
+
+# Static files
+staticfiles/
+
+

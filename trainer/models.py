@@ -2,12 +2,13 @@ from django.db import models
 
 # Create your models here.
 class Puzzle(models.Model):
+    # lets just implement medium first
     DIFFICULTY = {
         "E": "EASY - Preflop",
         "M": "MEDIUM - Flop",
         "H": "HARD - River",
     }
-    difficulty = models.CharField(max_length=1, choices=DIFFICULTY, default="E")
+    difficulty = models.CharField(max_length=1, choices=DIFFICULTY, default="M")
     # >> d = Puzzle(..., difficulty="E", ...)
     # >> d.save()
     # >> d.difficulty
@@ -41,6 +42,7 @@ class Puzzle(models.Model):
     )
 
     # TODO: hand_history JSON Field to store the generated predetermined poker game
+    hand_history = models.JSONField(default=dict)
 
 
     # TODO: add a many to many field to link users to completed puzzles
